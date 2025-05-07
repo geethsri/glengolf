@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dufferin Glen Golf Club - Masters Length Golf Course in Mono, Ontario</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c6e49;
+            --secondary-color: #4c956c;
+            --accent-color: #d68c45;
+            --light-color: #f2e8cf;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        .top-bar {
+            background-color: var(--light-color);
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        .navbar {
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand img {
+            max-height: 80px;
+        }
+        
+        .nav-link {
+            color: var(--dark-color);
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-link.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* CTA Buttons */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 24px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 24px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Feature Boxes */
+        .feature-box {
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            height: 100%;
+            transition: transform 0.3s;
+            border-top: 3px solid var(--primary-color);
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        /* Course Preview */
+        .course-preview {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .course-preview img {
+            transition: transform 0.5s;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .course-preview:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Special Offers */
+        .offer-card {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-heading {
+            color: var(--light-color);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .footer-link {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 1.4rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Newsletter Form */
+        .newsletter-form .form-control {
+            background-color: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 30px 0 0 30px;
+        }
+        
+        .newsletter-form .btn {
+            border-radius: 0 30px 30px 0;
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .navbar-brand img {
+                max-height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>
+                <a href="tel:5199425999" class="text-dark me-3"><i class="fas fa-phone-alt me-1"></i> 519.942.5999</a>
+                <a href="mailto:info@dufferinglengolf.com" class="text-dark"><i class="fas fa-envelope me-1"></i> info@dufferinglengolf.com</a>
+            </div>
+            <div>
+                <a href="#" class="text-dark me-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-dark me-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-dark"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="https://dufferinglengolf.com/wp-content/uploads/2017/11/dufferinglenlogo.png" alt="Dufferin Glen Golf Club Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dufferinglengolf.com/rates/">Rates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dufferinglengolf.com/driving-range/">Driving Range</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Golf Academy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Course Photos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Score Card</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <a href="https://dufferin-glen-golf-club.book.teeitup.com/" class="btn btn-primary ms-3">Book Tee Time</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('https://dufferinglengolf.com/wp-content/uploads/2017/11/DufferinGlenHole7.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">Masters Length Golf Course in Mono, Ontario</h1>
+                    <p class="lead mb-4">Experience our beautifully maintained 9-hole course nestled within mature trees and rolling hills. Perfect for golfers of all skill levels.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="https://dufferin-glen-golf-club.book.teeitup.com/" class="btn btn-primary me-3">Book a Tee Time</a>
+                        <a href="https://dufferinglengolf.com/driving-range/" class="btn btn-outline-light">Visit Our Driving Range</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Season Opening Announcement -->
+    <section class="py-4 bg-primary text-white">
+        <div class="container text-center">
+            <h2>NOW OPEN FOR THE 2025 SEASON</h2>
+            <p class="lead mb-0">The golf course opened on Good Friday, April 18th. Come enjoy the beautiful spring weather!</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Welcome to Dufferin Glen Golf Club</h2>
+                <p class="lead">A premier golfing experience in the Orangeville area</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-box bg-white">
+                        <div class="feature-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <h3 class="h5 mb-3">9-Hole Masters Length Course</h3>
+                        <p>Our professionally designed course features mature trees, rolling hills, and strategically placed hazards to challenge and delight golfers of all skill levels.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box bg-white">
+                        <div class="feature-icon">
+                            <i class="fas fa-golf-ball"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Practice Facilities</h3>
+                        <p>Improve your game with our premium range balls, practice putting green, and sand bunker. Perfect your skills before hitting the course.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box bg-white">
+                        <div class="feature-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Outdoor Patio</h3>
+                        <p>Relax after your round on our licensed outdoor patio with food and beverage services. Enjoy refreshments while taking in the beautiful course views.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Golf Passes 2025 -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">Golf Passes for 2025!</h2>
+                    <p class="lead mb-4">Our season passes are valid for 2 years from the date of purchase, offering exceptional value for regular golfers.</p>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between border-bottom py-2">
+                            <span>14 Walking Regular</span>
+                            <strong>$378.76 plus HST = $428.00</strong>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom py-2">
+                            <span>14 Walking Seniors</span>
+                            <strong>$361.06 plus HST = $408.00</strong>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom py-2">
+                            <span>14 Green Fees Power Cart</span>
+                            <strong>$555.75 plus HST = $628.00</strong>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom py-2">
+                            <span>14 Senior Green Fees & Power Cart</span>
+                            <strong>$511.50 plus HST = $578.00</strong>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom py-2">
+                            <span>Replay Walking</span>
+                            <strong>$19.47 plus HST</strong>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom py-2">
+                            <span>Replay Riding</span>
+                            <strong>$26.55 plus HST</strong>
+                        </div>
+                    </div>
+                    <a href="https://dufferinglen.golfems2.com/event/dufferin-glen-golf-passes-2025" class="btn btn-primary">Purchase Passes Now</a>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <img src="https://dufferinglengolf.com/wp-content/uploads/2017/11/DufferinGlenoverview-600x306.jpg" alt="Course Overview" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Gallery -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Explore Our Course</h2>
+                <p class="lead">Take a visual tour of our beautiful 9-hole course</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="course-preview">
+                        <img src="https://dufferinglengolf.com/wp-content/uploads/2017/11/DufferinGlenHole1-300x153.jpg" alt="Hole 1" class="img-fluid">
+                    </div>
+                    <h5 class="text-center">Hole 1</h5>
+                </div>
+                <div class="col-md-4">
+                    <div class="course-preview">
+                        <img src="https://dufferinglengolf.com/wp-content/uploads/2017/11/DufferinGlenHole2-300x153.jpg" alt="Hole 2" class="img-fluid">
+                    </div>
+                    <h5 class="text-center">Hole 2</h5>
+                </div>
+                <div class="col-md-4">
+                    <div class="course-preview">
+                        <img src="https://dufferinglengolf.com/wp-content/uploads/2017/11/DufferinGlenHole3-300x153.jpg" alt="Hole 3" class="img-fluid">
+                    </div>
+                    <h5 class="text-center">Hole 3</h5>
+                </div>
+                <div class="col-md-4">
+                    <div class="course-preview">
+                        <img src="https://dufferinglengolf.com/wp-content/uploads/2017/11/DufferinGlenHole5-300x153.jpg" alt="Hole 5" class="img-fluid">
+                    </div>
+                    <h5 class="text-center">Hole 5</h5>
+                </div>
+                <div class="col-md-4">
+                    <div class="course-preview">
+                        <img src="https://dufferinglengolf.com/wp-content/uploads/2017/11/DufferinGlenHole6-300x153.jpg" alt="Hole 6" class="img-fluid">
+                    </div>
+                    <h5 class="text-center">Hole 6</h5>
+                </div>
+                <div class="col-md-4">
+                    <div class="course-preview">
+                        <img src="https://dufferinglengolf.com/wp-content/uploads/2017/11/DufferinGlenoverview-300x153.jpg" alt="Course Overview" class="img-fluid">
+                    </div>
+                    <h5 class="text-center">Course Overview</h5>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-primary">View All Course Photos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Club Description -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">About Our Golf Club</h2>
+                    <p>Our golf facility in the Orangeville area offers a full range of golf programs and lessons for Adults, Ladies, and Juniors. We take pride in the care and maintenance of our golf course and always strive to ensure our guests have a pleasant experience.</p>
+                    <p>We have an outdoor patio and will be offering food and beverage services! Dufferin Glen Golf Club is a licensed establishment, outside alcohol is strictly prohibited.</p>
+                    <p>Located in the historical town of Orangeville, Ontario, Dufferin Glen Golf Club is nestled within mature trees and rolling hills. The course layout/condition will have you falling in love, have you begging for more, and is a great test for any and all skill levels.</p>
+                    <a href="#" class="btn btn-primary mt-3">Learn More About Us</a>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="bg-white p-4 rounded shadow h-100 d-flex flex-column justify-content-center">
+                                <div class="feature-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h4 class="h5">Golf Academy</h4>
+                                <p class="mb-0">Professional instruction for all ages and skill levels</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-white p-4 rounded shadow h-100 d-flex flex-column justify-content-center">
+                                <div class="feature-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <h4 class="h5">Events</h4>
+                                <p class="mb-0">Host your tournament or special event with us</p>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <div class="bg-white p-4 rounded shadow h-100 d-flex flex-column justify-content-center">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <h4 class="h5">Driving Range</h4>
+                                <p class="mb-0">Premium range balls and practice facilities</p>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-3">
+                            <div class="bg-white p-4 rounded shadow h-100 d-flex flex-column justify-content-center">
+                                <div class="feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4 class="h5">Passholders</h4>
+                                <p class="mb-0">Special benefits for our regular golfers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white text-center">
+        <div class="container">
+            <h2 class="fw-bold mb-4">Ready to Experience Dufferin Glen?</h2>
+            <p class="lead mb-4">Book your tee time today and enjoy our beautiful 9-hole course</p>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a href="https://dufferin-glen-golf-club.book.teeitup.com/" class="btn btn-light btn-lg">Book a Tee Time</a>
+                <a href="https://package-holders.book.teeitup.com/" class="btn btn-outline-light btn-lg">Passholder Bookings</a>
+                <a href="https://dufferinglen.golfems2.com/event/dufferin-glen-golf-passes-2025" class="btn btn-outline-light btn-lg">Buy 2025 Passes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="https://dufferinglengolf.com/wp-content/uploads/2017/11/dufferinglenlogo.png" alt="Dufferin Glen Golf Club Logo" class="mb-4" style="max-height: 80px;">
+                    <p>Dufferin Glen Golf Club offers a premier golfing experience in the Orangeville area with our beautifully maintained 9-hole course, practice facilities, and licensed patio.</p>
+                    <div class="mt-3">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="https://dufferinglengolf.com/rates/" class="footer-link">Rates</a>
+                    <a href="https://dufferinglengolf.com/driving-range/" class="footer-link">Driving Range</a>
+                    <a href="#" class="footer-link">Golf Academy</a>
+                    <a href="#" class="footer-link">Course Photos</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h4 class="footer-heading">Resources</h4>
+                    <a href="#" class="footer-link">Events</a>
+                    <a href="#" class="footer-link">Score Card</a>
+                    <a href="#" class="footer-link">Passholder Info</a>
+                    <a href="#" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="footer-heading">Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 753081 2 Nd Line Ehs, Mono, ON L9W 5W4</p>
+                    <p><i class="fas fa-phone-alt me-2"></i> 519.942.5999</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@dufferinglengolf.com</p>
+                    
+                    <h4 class="footer-heading mt-4">Newsletter</h4>
+                    <p>Sign up to receive timely, useful information in your inbox.</p>
+                    <form class="d-flex newsletter-form">
+                        <input type="email" class="form-control" placeholder="Email address">
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="mt-5 border-light">
+            <div class="text-center py-3">
+                <p class="mb-0">&copy; 2025 Dufferin Glen Golf Club | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
